@@ -9,7 +9,7 @@
 Настройте следующие параметры из application.properties
 
 * spring.application.ui.title=My Chart          #Наименование графика
-* chart.formule=#x ^ 2 - 12 * #x ^ 3 / 4 + 10   #Используемая формула на SPEL (https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
+* chart.formulae=#x ^ 2 - 12 * #x ^ 3 / 4 + 10   #Используемая формула на SPEL (https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
 * chart.margin.left=-20                         #Левая граница графика
 * chart.margin.right=20                         #Правая граница графика
 

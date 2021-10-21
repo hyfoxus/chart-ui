@@ -14,4 +14,12 @@
             <NumberAxis label="Y"/>
         </yAxis>
     </LineChart>
+    <LineChart prefHeight="600" fx:id="chart2">
+        <xAxis>
+            <NumberAxis label="X"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Y"/>
+        </yAxis>
+    </LineChart>
 </VBox>

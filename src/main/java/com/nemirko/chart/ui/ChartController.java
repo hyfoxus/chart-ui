@@ -11,14 +11,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static com.nemirko.chart.utils.GeneratorUtils.*;
+
 @Component
 public class ChartController {
     @FXML
     public LineChart<Double, Double> chart;
+    @FXML
+    public LineChart<Double, Long> chart2;
 
     private final ObservableList<XYChart.Data<Double, Double>> seriesData1 = FXCollections.observableArrayList();
     private final ObservableList<XYChart.Data<Double, Double>> seriesData2 = FXCollections.observableArrayList();
     private final ObservableList<XYChart.Data<Double, Double>> seriesData3 = FXCollections.observableArrayList();
+    private final ObservableList<XYChart.Data<Double, Long>> seriesDataLog = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -35,13 +40,37 @@ public class ChartController {
         data.add(series3);
         chart.setData(data);
 
-        List<Record> records = GeneratorUtils.generate(-4.6, 2.8, -4.7, 0.001);
+        List<Record> records = GeneratorUtils.generate(-4.6, 2.8, -4.7);
         for (int i = 0; i < records.size(); i++) {
             seriesData1.add(new XYChart.Data<>((double)i, records.get(i).getX1()));
             seriesData2.add(new XYChart.Data<>((double)i, records.get(i).getX2()));
             seriesData3.add(new XYChart.Data<>((double)i, records.get(i).getX3()));
         }
+        long count1 = records.stream()
+                .skip(1)
+                .filter(i -> i.getCondition1() >= EPSILON1 && i.getCondition2() >= EPSILON1)
+                .count();
+        seriesDataLog.add(new XYChart.Data<>(Math.log10(EPSILON1), count1));
+        long count2 = records.stream()
+                .skip(1)
+                .filter(i -> i.getCondition1() >= EPSILON2 && i.getCondition2() >= EPSILON2)
+                .count();
+        seriesDataLog.add(new XYChart.Data<>(Math.log10(EPSILON2), count2));
+        long count3 = records.stream()
+                .skip(1)
+                .filter(i -> i.getCondition1() >= EPSILON3 && i.getCondition2() >= EPSILON3)
+                .count();
+        seriesDataLog.add(new XYChart.Data<>(Math.log10(EPSILON3), count3));
+        long count4 = records.size() - 1;
+        seriesDataLog.add(new XYChart.Data<>(Math.log10(EPSILON4), count4));
 
+        ObservableList<XYChart.Series<Double, Long>> data2 = FXCollections.observableArrayList();
+        XYChart.Series<Double, Long> seriesLog = new XYChart.Series<>(seriesDataLog);
+        seriesLog.setName("Iterations");
+        data2.add(seriesLog);
+        chart2.setData(data2);
     }
+
+
 
 }

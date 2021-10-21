@@ -11,7 +11,7 @@ class GeneratorUtilsTest {
 
     @Test
     void testGeneration() {
-        List<Record> list = GeneratorUtils.generate(-4.6, 2.8, -4.7, 0.001);
+        List<Record> list = GeneratorUtils.generate(-4.6, 2.8, -4.7);
         assertEquals(list.size(), 30);
         double epsilon = 0.00001d;
         assertTrue(Math.abs(list.get(11).getX1() + 2.88984) < epsilon);

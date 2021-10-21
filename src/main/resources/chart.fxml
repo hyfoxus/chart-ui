@@ -3,23 +3,32 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns="http://javafx.com/javafx"
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.nemirko.chart.ui.ChartController">
-    <LineChart prefHeight="600" fx:id="chart">
-        <xAxis>
-            <NumberAxis label="X"/>
-        </xAxis>
-        <yAxis>
-            <NumberAxis label="Y"/>
-        </yAxis>
-    </LineChart>
-    <LineChart prefHeight="600" fx:id="chart2">
-        <xAxis>
-            <NumberAxis label="X"/>
-        </xAxis>
-        <yAxis>
-            <NumberAxis label="Y"/>
-        </yAxis>
-    </LineChart>
-</VBox>
+    <VBox prefWidth="500">
+        <LineChart prefHeight="800" fx:id="chart">
+            <xAxis>
+                <NumberAxis label="X"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Y"/>
+            </yAxis>
+        </LineChart>
+        <LineChart fx:id="iterationChart">
+            <xAxis>
+                <NumberAxis label="X"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Y"/>
+            </yAxis>
+        </LineChart>
+    </VBox>
+    <TableView prefWidth="920" fx:id="tableView">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+</HBox>

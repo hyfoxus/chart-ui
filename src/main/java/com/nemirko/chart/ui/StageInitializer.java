@@ -35,7 +35,7 @@ public class StageInitializer implements ApplicationListener<ChartApplication.St
             Parent parent = fxmlLoader.load();
 
             Stage stage = event.getStage();
-            stage.setScene(new Scene(parent, 800, 600));
+            stage.setScene(new Scene(parent, 1410, 800));
             stage.setTitle(applicationTitle);
             stage.show();
 

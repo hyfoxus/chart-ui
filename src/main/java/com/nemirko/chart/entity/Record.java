@@ -3,11 +3,11 @@ package com.nemirko.chart.entity;
 import com.nemirko.chart.utils.FunctionUtils;
 
 public class Record {
-    private final double x1;
-    private final double x2;
-    private final double x3;
-    private final double condition1;
-    private final double condition2;
+    private final Double x1;
+    private final Double x2;
+    private final Double x3;
+    private final Double condition1;
+    private final Double condition2;
 
     public Record(double x1, double x2, double x3, Record previous) {
         this.x1 = x1;
@@ -48,30 +48,30 @@ public class Record {
         this.x1 = x1;
         this.x2 = x2;
         this.x3 = x3;
-        condition1 = 0;
+        condition1 = 0.0;
         double f1 = FunctionUtils.f1(x1, x2, x3);
         double f2 = FunctionUtils.f2(x1, x2, x3);
         double f3 = FunctionUtils.f3(x1, x2, x3);
         condition2 = Math.abs(Math.sqrt(f1 * f1 + f2 * f2 + f3 * f3));
     }
 
-    public double getX1() {
+    public Double getX1() {
         return x1;
     }
 
-    public double getX2() {
+    public Double getX2() {
         return x2;
     }
 
-    public double getX3() {
+    public Double getX3() {
         return x3;
     }
 
-    public double getCondition1() {
+    public Double getCondition1() {
         return condition1;
     }
 
-    public double getCondition2() {
+    public Double getCondition2() {
         return condition2;
     }
 

@@ -12,6 +12,14 @@ group = 'com.nemirko'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+apply plugin : "java"
+ext {
+    javaMainClass = "com.nemirko.chart.ui.ChartUiApplication"
+}
+application {
+    mainClassName = javaMainClass
+}
+
 javafx {
     version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml' ] // you can add other javafx modules
